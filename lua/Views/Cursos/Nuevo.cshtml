@@ -1,0 +1,60 @@
+﻿@model lua.Models.ViewModels.CursoFormViewModel
+
+@{
+    ViewBag.Title = "Nuevo curso";
+}
+
+<h2>Nuevo curso</h2>
+
+@if (ViewBag.resultado != null)
+{
+    <div class="alert alert-success alert-@(ViewBag.resultado[0].ToString() == "fail"?"danger":"success")">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @ViewBag.resultado[1].ToString()
+    </div>
+}
+@using (Html.BeginForm("Nuevo", "Cursos", FormMethod.Post, new {enctype = "multipart/form-data", id = "form-curso" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Curso</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.curso.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.curso.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.curso.Titulo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.curso.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.curso.CategoriaId, Model.categorias.Select(x => new SelectListItem() { Value = x.Id.ToString(), Text = x.Nombre }), "Seleccionar categoría", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.curso.CategoriaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.curso.Portada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.imagenPortada, new { type = "file", @class = "form-control" , accept = "image/*" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "Cursos")" class="btn btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> <span>Volver a Mis Cursos</span></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

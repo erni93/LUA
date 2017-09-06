@@ -1,0 +1,78 @@
+﻿@model lua.Models.ViewModels.CapituloFormViewModel
+
+    @{
+        ViewBag.Title = "Nuevo capítulo";
+    }
+
+    <h2>Nuevo capítulo</h2>
+
+
+    @if (ViewBag.resultado != null)
+    {
+        <div class="alert alert-success alert-@(ViewBag.resultado[0].ToString() == "fail"?"danger":"success")">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @ViewBag.resultado[1].ToString()
+        </div>
+    }
+    @using (Html.BeginForm("Nuevo", "Capitulos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Capitulo</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.capitulo.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.capitulo.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.capitulo.Titulo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.capitulo.SeccionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(x => x.capitulo.SeccionId, Model.secciones.Select(x => new SelectListItem() { Value = x.Id.ToString(), Text = x.Titulo }), "Seleccionar sección", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.capitulo.SeccionId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.capitulo.Posicion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.capitulo.Posicion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.capitulo.Posicion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.capitulo.ContenidoHTML, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.capitulo.ContenidoHTML)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Crear" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <a href="@Url.Action("Index", "Cursos")" class="btn btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> <span>Volver a Mis Cursos</span></a>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/Scripts/tinymce/tinymce.min.js")
+        <script type="text/javascript">
+            tinymce.init({
+                selector: 'textarea',
+                plugins: "image codesample print table preview insertdatetime searchreplace lists"
+            });
+        </script>
+    }

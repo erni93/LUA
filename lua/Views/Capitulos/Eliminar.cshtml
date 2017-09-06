@@ -1,0 +1,51 @@
+﻿@model lua.Models.ViewModels.CapituloFormViewModel
+@{
+    ViewBag.Title = "Eliminar capítulo";
+}
+
+<h2>Eliminar capítulo</h2>
+
+<h3>¿Seguro que quieres eliminar el capítulo seleccionado?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.Titulo)
+        </dd>
+
+        <dt>
+            
+            @Html.DisplayNameFor(model => model.capitulo.ContenidoHTML)
+           
+        </dt>
+        <dd>
+            <div class="col-md-12">
+                @Html.Raw(Model.capitulo.ContenidoHTML) 
+            </div>
+            
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.Posicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.Posicion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" style="margin-bottom: 1em" />
+        </div>
+    }
+    <a href="@Url.Action("Index", "Cursos")" class="btn btn-success"><i class="fa fa-chevron-left" aria-hidden="true"></i> <span>Volver a Mis Cursos</span></a>
+</div>

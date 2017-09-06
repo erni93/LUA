@@ -1,0 +1,67 @@
+﻿@model lua.Models.ViewModels.SeccionFormViewModel
+
+@{
+    ViewBag.Title = "Detalles sección";
+}
+
+<h2>Detalles sección</h2>
+
+<div>
+    <h4>Seccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.CursoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.CursoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Posicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Posicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Portada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Portada)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.UsuarioId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.UsuarioId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Activo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.seccion.Id }) |
+    @Html.ActionLink("Volver al listado", "Index")
+</p>

@@ -1,0 +1,101 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #eee;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* MENU SUPERIOR */
+.navbar-brand{
+    padding: 0 !important;
+}
+#logo{
+    height: 75px;
+    margin-right: 20%;
+}
+.navbar-fixed-top {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .4px;
+}
+
+.navbar-nav > li > a {
+    height: 75px;
+    padding-top: 25px !important;
+}
+.nav > li > a:hover {
+    background-color: #fff;
+    z-index: 2;
+}
+.navbar-nav > li:hover {
+    background-color: #585858;
+}
+.body-content{
+    margin-top: 4em;
+}
+#puntuacion {
+    margin-top: 18px;
+    padding: 5px;
+}
+#puntuacion > span {
+    padding: 6px;
+}
+@media (max-width: 1200px) {
+    .container {
+        max-width: 98% !important;
+    }
+}
+/*Tablas*/
+th{
+    text-align: center !important;
+}
+
+
+
+/* Mensajes alerta */
+#message {
+    position: fixed;
+    top: 20%;
+    left: 35%;
+    width: 60%;
+    margin-top: -100px; /* Negative half of height. */
+    margin-left: -250px; /* Negative half of width. */
+}
+
+#inner-message {
+    margin: 0 20%;
+}
+
+/* Nuevo curso */
+#listadoSecciones > div{
+    margin-bottom: 1em;
+}
+.titulosNuevasSecciones{
+    margin-top: 1em;
+}
+
+/* Imagen Curso tabla y listado*/
+.imagenCurso {
+    width: 100px !important;
+    height: 150px !important;
+}

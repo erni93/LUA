@@ -1,0 +1,64 @@
+﻿@model lua.Models.ViewModels.SeccionFormViewModel
+
+@{
+    ViewBag.Title = "Eliminar sección";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que quieres eliminar la sección seleccionada?</h3>
+<div>
+    <h4>Seccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.CursoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.CursoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Posicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Posicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Portada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Portada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seccion.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seccion.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al listado", "Index")
+        </div>
+    }
+</div>

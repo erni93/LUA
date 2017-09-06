@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LUA</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/datatables.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a href='@Url.Action("Index", "Home",new { Area = "" })' class="navbar-brand">
+                    <img src='@Url.Content("~/Content/img/logo.png")' alt="logo" id="logo" />
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { Area = "" }, new{})</li>
+                    <li>@Html.ActionLink("Acerca de", "About", "Home", new { Area = "" }, new { })</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Mis cursos", "", "Cursos", new { Area = "" }, new { })</li>
+                    }
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, new { })</li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - LUA</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/datatables.min.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

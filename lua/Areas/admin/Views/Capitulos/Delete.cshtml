@@ -1,0 +1,71 @@
+﻿@model lua.Models.ViewModels.CapituloFormViewModel
+@{
+    ViewBag.Title = "Eliminar capítulo";
+}
+
+<h2>Eliminar capítulo</h2>
+
+<h3>¿Seguro que quieres eliminar el capítulo seleccionado?</h3>
+<div>
+    <h4>Capitulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.SeccionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.SeccionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.ContenidoHTML)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.ContenidoHTML)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.Posicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.Posicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.Portada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.Portada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capitulo.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capitulo.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al listado", "Index")
+        </div>
+    }
+</div>

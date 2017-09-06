@@ -1,0 +1,75 @@
+﻿@model lua.Models.ViewModels.CursoViewModel
+
+@{
+    ViewBag.Title = "Listado cursos";
+}
+
+<h2>Listado de Cursos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().UsuarioId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().CategoriaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().CategoriaNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().Portada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().HojaEstilos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursos.First().Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.cursos) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Portada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HojaEstilos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

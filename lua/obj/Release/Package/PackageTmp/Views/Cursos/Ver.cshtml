@@ -1,0 +1,51 @@
+﻿@model lua.Models.ViewModels.CursoCompletoViewModel
+
+@{
+    ViewBag.Title = "Curso " + Model.curso.Titulo;
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading text-center">
+        <h1>Curso</h1>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12 text-center" >
+            @if (Model.curso.Portada != null)
+            {
+                <img src="@(Model.curso.Portada)" class="imagenCurso" />
+            }
+            <h2 style="display: inline-block">@Html.DisplayFor(x => x.curso.Titulo)</h2>
+            <h3 style="display: inline-block">(@Html.DisplayFor(x => x.categoria.Nombre))</h3>
+        </div>
+    </div>
+</div>
+
+@foreach (var item in Model.secciones)
+{
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">
+            <h1>Sección <i class="fa fa-arrow-right" aria-hidden="true"></i> @item.Titulo</h1>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+               @{ 
+                   int i = 1;
+
+                   foreach (var cap in Model.capitulos.Where(x => x.SeccionId == item.Id))
+                   {
+                        <h3>@i . @cap.Titulo</h3>
+                        <div>
+                            @Html.Raw(cap.ContenidoHTML)
+                        </div>
+                       i++;
+                   }
+            }
+            </div>
+        </div>
+    </div>
+}
+    
+
+
